@@ -9,4 +9,4 @@
 * интерактивное изменение внешнего вида объектов;
 * высплывающее окно.
 
-[Ссылка на проект на GitPages](https://vsevolod-scherbinin.github.io/russian-travel/index.html)
+[Ссылка на проект на GitPages](https://vsevolod-scherbinin.github.io/mesto/)
