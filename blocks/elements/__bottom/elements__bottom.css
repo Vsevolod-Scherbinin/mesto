@@ -1,9 +1,7 @@
 .elements__bottom {
   margin: 0;
   padding: 25px 15px 31px 21px;
-  width: inherit;
   display: flex;
   justify-content: space-between;
-  /* white-space: nowrap;
-  overflow: hidden; */
+  align-items: center;
 }
