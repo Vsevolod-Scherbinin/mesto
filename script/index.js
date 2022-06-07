@@ -54,9 +54,6 @@ function closePopup(evt) {
 buttonsClose.forEach(function(item) {
   item.addEventListener('click', closePopup);
 });
-// buttonsSubmit.forEach(function(item) {
-//   item.addEventListener('click', closePopup);
-// });
 // ClosePopup-End
 
 // Edit-Start
@@ -83,8 +80,8 @@ formEdit.addEventListener('submit', submitEdit);
 // OpenImage-Start
 function openImage(evt) {
   popupImage.querySelector('.popup__image').src = evt.target.src;
-  popupImage.querySelector('.popup__image').alt = evt.target.parentElement.querySelector('.elements__name').textContent;
-  popupImage.querySelector('.popup__image-name').textContent = evt.target.parentElement.querySelector('.elements__name').textContent;
+  popupImage.querySelector('.popup__image').alt = evt.target.alt;
+  popupImage.querySelector('.popup__image-name').textContent = evt.target.alt;
   openPopup(popupImage);
 };
 // OpenImage-End
@@ -101,9 +98,9 @@ function createCard(elem) {
   return cardElement;
 };
 
-function addCard(what, where) {
-  where.prepend(what);
-}
+function addCard(elem) {
+  cardsList.prepend(elem);
+};
 buttonAddCard.addEventListener('click', () => openPopup(popupAddCard));
 
 function submitAddCard(evt) {
@@ -113,7 +110,7 @@ function submitAddCard(evt) {
     name: inputPlace.value,
     link: inputLink.value
   };
-  addCard(createCard(newCard), cardsList);
+  addCard(createCard(newCard));
   formAddCard.reset();
   closePopup(evt);
 };
@@ -121,5 +118,5 @@ formAddCard.addEventListener('submit', submitAddCard);
 // Add-End
 
 initialCards.forEach(function(item){
-    addCard(createCard(item), cardsList);
+    addCard(createCard(item));
 });
