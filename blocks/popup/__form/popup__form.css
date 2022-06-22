@@ -1,18 +1,19 @@
-.popup__container_type_form {
-  padding: 34px 36px 37px;
+.popup__form {
+  margin: 0;
+  padding: 34px 36px 36.5px;
   width: 430px;
-  height: 330px;
+  min-height: 330px;
   border-radius: 10px;
   box-sizing: border-box;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
-  background-color: #fff;
-}
+};
 
 @media screen and (max-width: 767px) {
-  .popup__container_type_form {
+  .popup__form {
     padding: 25px 22px;
     width: 282px;
     height: 322px;
-  }
-}
+  };
+};
