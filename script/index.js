@@ -1,8 +1,12 @@
+import Card from './Card.js';
+import initialCards from './initialCards.js';
+import FormValidator from './FormValidator.js';
+import validationObject from './validationObject.js';
+
 // Popups-Start
 const popups = document.querySelectorAll('.popup');
 const popupEdit = document.querySelector('.popup_type_edit');
 const popupAddCard = document.querySelector('.popup_type_addCard');
-const popupImage = document.querySelector('.popup_type_image');
 const popupOverlays = document.querySelectorAll('.popup__overlay');
 // Popups-End
 
@@ -16,9 +20,17 @@ const addSubmitButton = popupAddCard.querySelector('.popup__button');
 // Buttons-End
 
 // Forms-Start
-const formEdit = popupEdit.querySelector('.popup__form');
-const formAddCard = popupAddCard.querySelector('.popup__form');
+const formEdit = document.querySelector('.popup__form_type_edit');
+const formAddCard = document.querySelector('.popup__form_type_addCard');
+const forms = document.querySelectorAll('.popup__form');
 // Forms-End
+
+// Validators-Start
+const validatorEdit = new FormValidator (validationObject, formEdit);
+validatorEdit.enableValidation();
+const validatorAddCard = new FormValidator (validationObject, formAddCard);
+validatorAddCard.enableValidation();
+// Validators-End
 
 // Inputs-Start
 const editInputs = Array.from(popupEdit.querySelectorAll('.popup__input'));
@@ -39,14 +51,6 @@ const cardsList = document.querySelector('.elements__items');
 const cardTemplate = document.querySelector('#elements__item').content;
 let cardElement = '';
 // Cards-End
-
-function likeCard(evt) {
-  evt.target.classList.toggle('elements__like_activated');
-};
-
-function deleteCard(evt) {
-  evt.target.closest('.elements__item').remove();
-};
 
 // ClosePopup-Start
 function closePopupByEsc(evt) {
@@ -79,10 +83,7 @@ function openPopup(elem) {
 function editProfile() {
   inputName.value = profileName.textContent;
   inputJob.value = profileJob.textContent;
-  toggleSubmitButtonState(editInputs, editSubmitButton, validationObject);
-  editInputs.forEach(function (item) {
-    checkInputValidity(formEdit, item, validationObject);
-  });
+  validatorEdit.toggleSubmitButtonState(editInputs, editSubmitButton);
   openPopup(popupEdit);
 };
 buttonEdit.addEventListener('click', editProfile);
@@ -100,25 +101,16 @@ formEdit.addEventListener('submit', submitEdit);
 
 // Add-Start
 function inputCard() {
-  toggleSubmitButtonState(addInputs, addSubmitButton, validationObject);
+  validatorAddCard.toggleSubmitButtonState(addInputs, addSubmitButton);
   openPopup(popupAddCard);
 };
 buttonAddCard.addEventListener('click', inputCard);
 
-function createCard(elem) {
-  cardElement = cardTemplate.querySelector('.elements__item').cloneNode(true);
-  cardElement.querySelector('.elements__name').textContent = elem.name;
-  cardElement.querySelector('.elements__image').src = elem.link;
-  cardElement.querySelector('.elements__image').alt = elem.name;
-  cardElement.querySelector('.elements__image').addEventListener('click', openImage);
-  cardElement.querySelector('.elements__like').addEventListener('click', likeCard);
-  cardElement.querySelector('.elements__delete').addEventListener('click', deleteCard);
-  return cardElement;
-};
-
 function addCard(elem) {
-  cardsList.prepend(elem);
-};
+  const card = new Card(elem, '#elements__item');
+  const cardElement = card.generateCard();
+  cardsList.prepend(cardElement);
+}
 
 function submitAddCard(evt) {
   evt.preventDefault();
@@ -126,22 +118,13 @@ function submitAddCard(evt) {
     name: inputPlace.value,
     link: inputLink.value
   };
-  addCard(createCard(newCard));
+  addCard(newCard);
   formAddCard.reset();
   closePopup(evt.target.closest('.popup'));
 };
 formAddCard.addEventListener('submit', submitAddCard);
 // Add-End
 
-// OpenImage-Start
-function openImage(evt) {
-  popupImage.querySelector('.popup__image').src = evt.target.src;
-  popupImage.querySelector('.popup__image').alt = evt.target.alt;
-  popupImage.querySelector('.popup__image-name').textContent = evt.target.alt;
-  openPopup(popupImage);
-};
-// OpenImage-End
-
 initialCards.forEach(function(item){
-    addCard(createCard(item));
+  addCard(item);
 });
