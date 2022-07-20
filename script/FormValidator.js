@@ -8,6 +8,8 @@ class FormValidator {
     this._errorClass = object.errorClass;
 
     this._form = form;
+    this._inputs = Array.from(form.querySelectorAll(this._inputSelector));
+    this._submitButton = form.querySelector(this._submitButtonSelector);
   }
 
   _showInputError(form, input, errorMessage) {
@@ -39,13 +41,11 @@ class FormValidator {
   };
 
   _setEventListeners(form) {
-    const inputs = Array.from(form.querySelectorAll(this._inputSelector));
-    const submitButton = form.querySelector(this._submitButtonSelector);
-    this.toggleSubmitButtonState(inputs, submitButton);
-    inputs.forEach((item) => {
+    this.toggleSubmitButtonState(this._inputs, this._submitButton);
+    this._inputs.forEach((item) => {
       item.addEventListener('input', () => {
         this._checkInputValidity(form, item);
-        this.toggleSubmitButtonState(inputs, submitButton);
+        this.toggleSubmitButtonState(this._inputs, this._submitButton);
       });
     });
   };
@@ -61,14 +61,11 @@ class FormValidator {
   };
 
   enableValidation() {
-    const forms = Array.from(document.querySelectorAll(this._formSelector));
-    forms.forEach((item) => {
-      item.addEventListener('submit', (evt) => {
-        evt.preventDefault();
-      });
-
-      this._setEventListeners(item);
+    this._form.addEventListener('submit', (evt) => {
+      evt.preventDefault();
     });
+
+    this._setEventListeners(this._form);
   };
 }
 

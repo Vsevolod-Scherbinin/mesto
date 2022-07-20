@@ -33,10 +33,10 @@ validatorAddCard.enableValidation();
 // Validators-End
 
 // Inputs-Start
-const editInputs = Array.from(popupEdit.querySelectorAll('.popup__input'));
+const inputsEdit = Array.from(popupEdit.querySelectorAll('.popup__input'));
 const inputName = popupEdit.querySelector('.popup__input_content_name');
 const inputJob = popupEdit.querySelector('.popup__input_content_job');
-const addInputs = Array.from(popupAddCard.querySelectorAll('.popup__input'));
+const inputsAdd = Array.from(popupAddCard.querySelectorAll('.popup__input'));
 const inputPlace = popupAddCard.querySelector('.popup__input_content_place');
 const inputLink = popupAddCard.querySelector('.popup__input_content_link');
 // Inputs-End
@@ -83,12 +83,12 @@ function openPopup(elem) {
 function editProfile() {
   inputName.value = profileName.textContent;
   inputJob.value = profileJob.textContent;
-  validatorEdit.toggleSubmitButtonState(editInputs, editSubmitButton);
+  validatorEdit.toggleSubmitButtonState(inputsEdit, editSubmitButton);
   openPopup(popupEdit);
 };
 buttonEdit.addEventListener('click', editProfile);
 
-function submitEdit (evt) {
+function submitProfileEditForm (evt) {
   evt.preventDefault();
   const name = inputName.value;
   const job = inputJob.value;
@@ -96,12 +96,12 @@ function submitEdit (evt) {
   profileJob.textContent = job;
   closePopup(evt.target.closest('.popup'));
 };
-formEdit.addEventListener('submit', submitEdit);
+formEdit.addEventListener('submit', submitProfileEditForm);
 // Edit-End
 
 // Add-Start
 function inputCard() {
-  validatorAddCard.toggleSubmitButtonState(addInputs, addSubmitButton);
+  validatorAddCard.toggleSubmitButtonState(inputsAdd, addSubmitButton);
   openPopup(popupAddCard);
 };
 buttonAddCard.addEventListener('click', inputCard);
@@ -128,3 +128,5 @@ formAddCard.addEventListener('submit', submitAddCard);
 initialCards.forEach(function(item){
   addCard(item);
 });
+
+export default openPopup;

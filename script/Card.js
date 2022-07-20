@@ -1,3 +1,5 @@
+import openPopup from './index.js';
+
 const popupCard = document.querySelector('.popup_type_image');
 const popupImgClsBtn = popupCard.querySelector('.popup__close-button');
 
@@ -20,40 +22,19 @@ class Card {
 
   _deleteCard() {
     this._element.remove();
+    this._element = null;
   }
 
-  _closePopup() {
-    popupCard.querySelector('.popup__image-name').textContent = '';
-    popupCard.querySelector('.popup__image').src = '';
-    popupCard.classList.remove('popup_open');
-    document.removeEventListener('keydown', (evt) => {
-      this._closePopupByEsc(evt);
-    });
-  }
-
-  _closePopupByEsc(evt) {
-    const popupCardOpened = document.querySelector('.popup_open');
-    if(popupCardOpened && evt.key === 'Escape') {
-      this._closePopup();
-    };
-  }
-
-  _openPopup() {
+  _showImage() {
     popupCard.querySelector('.popup__image-name').textContent = this._name;
     popupCard.querySelector('.popup__image').src = this._link;
-    popupCard.classList.add('popup_open');
-    document.addEventListener('keydown', (evt) => {
-      this._closePopupByEsc(evt);
-    });
+    popupCard.querySelector('.popup__image').alt = this._name;
   }
 
   _setEventListeners() {
     this._element.querySelector('.elements__image').addEventListener('click', () => {
-      this._openPopup();
-    });
-
-    popupImgClsBtn.addEventListener('click', () => {
-      this._closePopup();
+      this._showImage();
+      openPopup(popupCard);
     });
 
     this._element.querySelector('.elements__like').addEventListener('click', () => {
@@ -70,8 +51,9 @@ class Card {
     this._setEventListeners();
 
     this._element.querySelector('.elements__name').textContent = this._name;
-    this._element.querySelector('.elements__image').src = this._link;
-    this._element.querySelector('.elements__image').alt = this._name;
+    const image = this._element.querySelector('.elements__image');
+    image.src = this._link;
+    image.alt = this._name;
 
     return this._element;
   }
