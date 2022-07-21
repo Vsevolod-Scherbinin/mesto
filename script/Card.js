@@ -1,7 +1,7 @@
-import openPopup from './index.js';
+import {openPopup} from './commonFunctions.js';
 
 const popupCard = document.querySelector('.popup_type_image');
-const popupImgClsBtn = popupCard.querySelector('.popup__close-button');
+
 
 // М.б. надо добавить отдельный метод закрытия по Esc
 class Card {

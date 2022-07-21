@@ -2,19 +2,17 @@ import Card from './Card.js';
 import initialCards from './initialCards.js';
 import FormValidator from './FormValidator.js';
 import validationObject from './validationObject.js';
+import { closePopup, openPopup } from './commonFunctions.js';
 
 // Popups-Start
 const popups = document.querySelectorAll('.popup');
 const popupEdit = document.querySelector('.popup_type_edit');
 const popupAddCard = document.querySelector('.popup_type_addCard');
-const popupOverlays = document.querySelectorAll('.popup__overlay');
 // Popups-End
 
 // Buttons-Start
 const buttonEdit = document.querySelector('.profile__edit');
 const buttonAddCard = document.querySelector('.profile__add-button');
-const buttonsClose = document.querySelectorAll('.popup__close-button');
-const buttonsSubmit = document.querySelectorAll('.popup__button');
 const editSubmitButton = popupEdit.querySelector('.popup__button');
 const addSubmitButton = popupAddCard.querySelector('.popup__button');
 // Buttons-End
@@ -22,7 +20,6 @@ const addSubmitButton = popupAddCard.querySelector('.popup__button');
 // Forms-Start
 const formEdit = document.querySelector('.popup__form_type_edit');
 const formAddCard = document.querySelector('.popup__form_type_addCard');
-const forms = document.querySelectorAll('.popup__form');
 // Forms-End
 
 // Validators-Start
@@ -53,18 +50,6 @@ let cardElement = '';
 // Cards-End
 
 // ClosePopup-Start
-function closePopupByEsc(evt) {
-  const popupOpened = document.querySelector('.popup_open');
-  if(popupOpened && evt.key === 'Escape') {
-    closePopup(popupOpened);
-  };
-};
-
-function closePopup(elem) {
-  elem.classList.remove('popup_open');
-  document.removeEventListener('keydown', closePopupByEsc);
-};
-
 popups.forEach(function(item) {
   item.addEventListener('click', function(evt) {
     if(evt.target.classList.contains('popup__overlay') || evt.target.classList.contains('popup__close-button')) {
@@ -73,11 +58,6 @@ popups.forEach(function(item) {
   });
 });
 // ClosePopup-End
-
-function openPopup(elem) {
-  elem.classList.add('popup_open');
-  document.addEventListener('keydown', closePopupByEsc);
-};
 
 // Edit-Start
 function editProfile() {
@@ -128,5 +108,3 @@ formAddCard.addEventListener('submit', submitAddCard);
 initialCards.forEach(function(item){
   addCard(item);
 });
-
-export default openPopup;
