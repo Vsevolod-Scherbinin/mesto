@@ -1,14 +1,11 @@
-import {openPopup} from './commonFunctions.js';
+// import PopupWithImage from './PopupWithImage.js';
 
-const popupCard = document.querySelector('.popup_type_image');
-
-
-// М.б. надо добавить отдельный метод закрытия по Esc
-class Card {
-  constructor(object, templateSelector) {
-    this._name = object.name;
-    this._link = object.link;
+export default class Card {
+  constructor({name, link}, templateSelector, handleCardClick) {
+    this._name = name;
+    this._link = link;
     this._templateSelector = templateSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -25,16 +22,15 @@ class Card {
     this._element = null;
   }
 
-  _showImage() {
-    popupCard.querySelector('.popup__image-name').textContent = this._name;
-    popupCard.querySelector('.popup__image').src = this._link;
-    popupCard.querySelector('.popup__image').alt = this._name;
-  }
-
   _setEventListeners() {
+    // this._element.querySelector('.elements__image').addEventListener('click', () => {
+    //   const popupImage = new PopupWithImage('.popup_type_image');
+    //   popupImage.open(this._name, this._link);
+    // });
+    const name = this._name;
+    const link = this._link;
     this._element.querySelector('.elements__image').addEventListener('click', () => {
-      this._showImage();
-      openPopup(popupCard);
+      this._handleCardClick({name, link});
     });
 
     this._element.querySelector('.elements__like').addEventListener('click', () => {
@@ -58,5 +54,3 @@ class Card {
     return this._element;
   }
 }
-
-export default Card;
