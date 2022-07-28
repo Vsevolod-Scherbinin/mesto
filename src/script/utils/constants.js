@@ -42,8 +42,6 @@ export const popupAddCardSelector = document.querySelector('.popup_type_addCard'
 // Buttons-Start
 export const buttonEdit = document.querySelector('.profile__edit');
 export const buttonAddCard = document.querySelector('.profile__add-button');
-export const editSubmitButton = popupEditSelector.querySelector('.popup__button');
-export const addSubmitButton = popupAddCardSelector.querySelector('.popup__button');
 // Buttons-End
 
 // Forms-Start
@@ -51,14 +49,7 @@ export const formEdit = document.querySelector('.popup__form_type_edit');
 export const formAddCard = document.querySelector('.popup__form_type_addCard');
 // Forms-End
 
-// Inputs-Start
-export const inputsEdit = Array.from(popupEditSelector.querySelectorAll('.popup__input'));
-export const inputsAdd = Array.from(popupAddCardSelector.querySelectorAll('.popup__input'));
-// Inputs-End
-
 // Profile-Start
-// export const profileName = document.querySelector('.profile__name');
-// export const profileJob = document.querySelector('.profile__job');
 export const profileNameSelector = '.profile__name';
 export const profileJobSelector = '.profile__job';
 // Profile-End

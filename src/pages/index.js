@@ -1,26 +1,23 @@
-import '../../pages/index.css';
-import Section from '../components/Section.js';
-import Card from '../components/Card.js';
-import UserInfo from '../components/UserInfo.js';
-import FormValidator from '../components/FormValidator.js';
-import PopupWithForm from '../components/PopupWithForm.js';
-import handleCardClick from '../utils/utils.js';
+import './index.css';
+import Section from '../script/components/Section.js';
+import UserInfo from '../script/components/UserInfo.js';
+import FormValidator from '../script/components/FormValidator.js';
+import PopupWithForm from '../script/components/PopupWithForm.js';
+import {
+  createCard
+} from '../script/utils/utils.js';
 
 import {
   initialCards,
   validationObject,
   buttonEdit,
   buttonAddCard,
-  editSubmitButton,
-  addSubmitButton,
   formEdit,
   formAddCard,
-  inputsEdit,
-  inputsAdd,
   profileNameSelector,
   profileJobSelector,
   cardsContainerSelector
-} from '../utils/constants.js';
+} from '../script/utils/constants.js';
 
 // Validators-Start
 const validatorEdit = new FormValidator (validationObject, formEdit);
@@ -34,10 +31,7 @@ validatorAddCard.enableValidation();
 const cardsList = new Section({
   items: initialCards,
   renderer: (elem) => {
-    const card = new Card(elem, '#elements__item',
-    handleCardClick);
-    const cardElement = card.generateCard();
-    cardsList.addItem(cardElement);
+    cardsList.addItem(createCard(elem));
   }
 }, cardsContainerSelector);
 
@@ -48,17 +42,14 @@ cardsList.render();
 const popupAdd = new PopupWithForm(
   '.popup_type_addCard',
   (elem) => {
-    const card = new Card(elem, '#elements__item',
-    handleCardClick);
-    const cardElement = card.generateCard();
-    cardsList.addItem(cardElement);
+    cardsList.addItem(createCard(elem));
   }
 );
 popupAdd.setEventListeners();
 
 buttonAddCard.addEventListener('click', () => {
   popupAdd.open();
-  validatorAddCard.toggleSubmitButtonState(inputsAdd, addSubmitButton);
+  validatorAddCard.toggleSubmitButtonState();
 });
 //Popup-Add-End
 // Add-Card-End
@@ -77,6 +68,6 @@ popupEdit.setEventListeners();
 buttonEdit.addEventListener('click', () => {
   popupEdit.open();
   popupEdit.setInputValues(profile.getUserInfo());
-  validatorEdit.toggleSubmitButtonState(inputsEdit, editSubmitButton);
+  validatorEdit.toggleSubmitButtonState();
 });
 //Popup-Edit-End
