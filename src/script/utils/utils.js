@@ -1,8 +1,9 @@
 import PopupWithImage from '../components/PopupWithImage.js';
 import Card from '../components/Card.js';
 
+const popupImage = new PopupWithImage('.popup_type_image');
+
 export function handleCardClick(name, link) {
-  const popupImage = new PopupWithImage('.popup_type_image');
   popupImage.open(name, link);
   popupImage.setEventListeners();
 }

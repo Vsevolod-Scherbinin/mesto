@@ -68,6 +68,6 @@ popupEdit.setEventListeners();
 buttonEdit.addEventListener('click', () => {
   popupEdit.open();
   popupEdit.setInputValues(profile.getUserInfo());
-  validatorEdit.toggleSubmitButtonState();
+  validatorEdit.checkFormValidity();
 });
 //Popup-Edit-End

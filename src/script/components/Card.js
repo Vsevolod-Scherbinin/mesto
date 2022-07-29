@@ -45,9 +45,8 @@ export default class Card {
     this._setEventListeners();
 
     this._element.querySelector('.elements__name').textContent = this._name;
-    const image = this._element.querySelector('.elements__image');
-    image.src = this._link;
-    image.alt = this._name;
+    this._image.src = this._link;
+    this._image.alt = this._name;
 
     return this._element;
   }

@@ -50,6 +50,13 @@ class FormValidator {
     });
   };
 
+  checkFormValidity() {
+    this._inputs.forEach((item) => {
+      this._checkInputValidity(item);
+      this.toggleSubmitButtonState();
+    });
+  }
+
   toggleSubmitButtonState() {
     if(this._hasInvalidInput()) {
       this._submitButton.classList.add(this._inactiveButtonClass);
