@@ -16,7 +16,7 @@
 
 @media screen and (max-width: 767px) {
   .popup__button {
-    margin: 28px 0 0;
+    margin: 0;
     width: 238px;
     height: 46px;
   }
