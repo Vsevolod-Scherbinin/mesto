@@ -49,6 +49,7 @@ popupAdd.setEventListeners();
 
 buttonAddCard.addEventListener('click', () => {
   popupAdd.open();
+  validatorAddCard.hideFormErrors();
   validatorAddCard.toggleSubmitButtonState();
 });
 //Popup-Add-End
@@ -69,5 +70,6 @@ buttonEdit.addEventListener('click', () => {
   popupEdit.open();
   popupEdit.setInputValues(profile.getUserInfo());
   validatorEdit.checkFormValidity();
+  validatorEdit.toggleSubmitButtonState();
 });
 //Popup-Edit-End

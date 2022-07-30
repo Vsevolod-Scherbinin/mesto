@@ -1,5 +1,5 @@
 .popup__header {
-  margin: 0 0 54px;
+  margin: 0 0 41px;
   padding: 0;
   height: 23px;
   color: #000;
@@ -10,7 +10,7 @@
 
 @media screen and (max-width: 767px) {
   .popup__header {
-    margin: 0 0 50px;
+    margin: 0 0 62px;
     font-size: 18px;
     line-height: 22px;
   }

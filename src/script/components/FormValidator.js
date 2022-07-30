@@ -40,20 +40,16 @@ class FormValidator {
     });
   };
 
-  _setEventListeners() {
-    this.toggleSubmitButtonState();
-    this._inputs.forEach((item) => {
-      item.addEventListener('input', () => {
-        this._checkInputValidity(item);
-        this.toggleSubmitButtonState();
-      });
-    });
-  };
-
   checkFormValidity() {
     this._inputs.forEach((item) => {
       this._checkInputValidity(item);
       this.toggleSubmitButtonState();
+    });
+  }
+
+  hideFormErrors() {
+    this._inputs.forEach((item) => {
+      this._hideInputError(item);
     });
   }
 
@@ -65,6 +61,16 @@ class FormValidator {
       this._submitButton.classList.remove(this._inactiveButtonClass);
       this._submitButton.disabled = false;
     };
+  };
+
+  _setEventListeners() {
+    this.toggleSubmitButtonState();
+    this._inputs.forEach((item) => {
+      item.addEventListener('input', () => {
+        this._checkInputValidity(item);
+        this.toggleSubmitButtonState();
+      });
+    });
   };
 
   enableValidation() {

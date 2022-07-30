@@ -1,5 +1,3 @@
-// import PopupWithImage from './PopupWithImage.js';
-
 export default class Card {
   constructor({name, link}, templateSelector, handleCardClick) {
     this._name = name;
@@ -9,7 +7,7 @@ export default class Card {
   }
 
   _getTemplate() {
-    const cardElement = document.querySelector(this._templateSelector).content.cloneNode(true);
+    const cardElement = document.querySelector(this._templateSelector).content.querySelector('.elements__item').cloneNode(true);
     return cardElement;
   }
 
@@ -23,7 +21,6 @@ export default class Card {
   }
 
   _setEventListeners() {
-
     this._image.addEventListener('click', () => {
       this._handleCardClick(this._name, this._link);
     });
