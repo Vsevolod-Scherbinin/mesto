@@ -7,6 +7,13 @@ export default class UserInfo {
     this._job = document.querySelector(this._jobSelector);
   }
 
+  // getUserInfo(object) {
+  //   return this._element = {
+  //     name: object.name,
+  //     job: object.about
+  //   }
+  // }
+
   getUserInfo() {
     return this._element = {
       name: this._name.textContent,

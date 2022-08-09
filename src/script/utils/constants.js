@@ -1,29 +1,4 @@
-export const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
+import Api from "../components/Api.js";
 
 export const validationObject = {
   formSelector: '.popup__form',
@@ -34,24 +9,31 @@ export const validationObject = {
   errorClass: 'popup__error_visible'
 };
 
-// Popups-Start
-export const popupEditSelector = document.querySelector('.popup_type_edit');
-export const popupAddCardSelector = document.querySelector('.popup_type_addCard');
-// Popups-End
+export const api = new Api('https://nomoreparties.co/v1/cohort-47','d56489ec-bc38-40f2-8680-e7ca1665b976');
+
+export const profileId = 'bd0c7cafc695cdf97ed6df6c';
 
 // Buttons-Start
 export const buttonEdit = document.querySelector('.profile__edit');
+export const buttonEditAvatar = document.querySelector('.profile__avatarEditButton');
 export const buttonAddCard = document.querySelector('.profile__add-button');
+export const submitButtonEdit = document.querySelector('.popup__button_type_edit');
+export const submitButtonEditAvatar = document.querySelector('.popup__button_type_editAvatar');
+export const submitButtonAddCard = document.querySelector('.popup__button_type_addCard');
+export const submitButtonConfirm = document.querySelector('.popup__button_type_confirm');
 // Buttons-End
 
 // Forms-Start
 export const formEdit = document.querySelector('.popup__form_type_edit');
 export const formAddCard = document.querySelector('.popup__form_type_addCard');
+export const formEditAvatar = document.querySelector('.popup__form_type_editAvatar');
 // Forms-End
 
 // Profile-Start
 export const profileNameSelector = '.profile__name';
 export const profileJobSelector = '.profile__job';
+export const profileAvatarSelector = '.profile__avatar';
+export const profileAvatar = document.querySelector(profileAvatarSelector);
 // Profile-End
 
 // Cards-Start

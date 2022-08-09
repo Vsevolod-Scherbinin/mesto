@@ -15,7 +15,9 @@
 /* Profile-Start */
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__main/profile__main.css);
+@import url(../blocks/profile/__avatarContainer/profile__avatarContainer.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/profile/__avatarEditButton/profile__avatarEditButton.css);
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__header/profile__header.css);
 @import url(../blocks/profile/__name/profile__name.css);
@@ -30,10 +32,13 @@
 @import url(../blocks/elements/__item/elements__item.css);
 @import url(../blocks/elements/__image/elements__image.css);
 @import url(../blocks/elements/__delete/elements__delete.css);
+@import url(../blocks/elements/__delete/_disabled/elements__delete_disabled.css);
 @import url(../blocks/elements/__bottom/elements__bottom.css);
 @import url(../blocks/elements/__name/elements__name.css);
 @import url(../blocks/elements/__like/elements__like.css);
 @import url(../blocks/elements/__like/_activated/elements__like_activated.css);
+@import url(../blocks/elements/__like-area/elements__like-area.css);
+@import url(../blocks/elements/__like-counter/elements__like-counter.css);
 /* Elements-End */
 
 /* Footer-Start */
@@ -46,6 +51,7 @@
 @import url(../blocks/popup/_open/popup_open.css);
 @import url(../blocks/popup/_type/popup_type_image.css);
 @import url(../blocks/popup/_type/popup_type_addCard.css);
+@import url(../blocks/popup/_type/popup_type_confirm.css);
 @import url(../blocks/popup/_type/popup_type_edit.css);
 @import url(../blocks/popup/__error/popup__error.css);
 @import url(../blocks/popup/__error/_visible/popup__error_visible.css);
@@ -54,11 +60,13 @@
 @import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__form/_type/popup__form_type_edit.css);
 @import url(../blocks/popup/__form/_type/popup__form_type_addCard.css);
+@import url(../blocks/popup/__form/_type/popup__form_type_confirm.css);
 @import url(../blocks/popup/__close-button/popup__close-button.css);
 @import url(../blocks/popup/__image-name/popup__image-name.css);
 @import url(../blocks/popup/__button/popup__button.css);
 @import url(../blocks/popup/__button/_type/popup__button_type_edit.css);
 @import url(../blocks/popup/__button/_type/popup__button_type_addCard.css);
+@import url(../blocks/popup/__button/_type/popup__button_type_confirm.css);
 @import url(../blocks/popup/__button/_disabled/popup__button_disabled.css);
 @import url(../blocks/popup/__header/popup__header.css);
 @import url(../blocks/popup/__image/popup__image.css);
