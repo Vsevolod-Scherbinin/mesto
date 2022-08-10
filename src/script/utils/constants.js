@@ -11,8 +11,6 @@ export const validationObject = {
 
 export const api = new Api('https://nomoreparties.co/v1/cohort-47','d56489ec-bc38-40f2-8680-e7ca1665b976');
 
-export const profileId = 'bd0c7cafc695cdf97ed6df6c';
-
 // Buttons-Start
 export const buttonEdit = document.querySelector('.profile__edit');
 export const buttonEditAvatar = document.querySelector('.profile__avatarEditButton');
@@ -33,7 +31,7 @@ export const formEditAvatar = document.querySelector('.popup__form_type_editAvat
 export const profileNameSelector = '.profile__name';
 export const profileJobSelector = '.profile__job';
 export const profileAvatarSelector = '.profile__avatar';
-export const profileAvatar = document.querySelector(profileAvatarSelector);
+// export const profileAvatar = document.querySelector(profileAvatarSelector);
 // Profile-End
 
 // Cards-Start
