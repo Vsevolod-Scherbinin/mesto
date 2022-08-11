@@ -28,7 +28,7 @@ import {
 
 // Page-Load-Transition-Start
 window.addEventListener('load', () => {
-  document.querySelector('.page').classList.remove('page__loading');
+  document.querySelector('.page').classList.remove('windowLoading');
 });
 // Page-Load-Transition-End
 

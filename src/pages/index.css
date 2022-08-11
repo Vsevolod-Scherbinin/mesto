@@ -4,7 +4,7 @@
 /* Vendor-End */
 
 @import url(../blocks/page/page.css);
-@import url(../blocks/page/__loading/page__loading.css);
+@import url(../blocks/windowLoading/windowLoading.css);
 
 /* Header-Start */
 @import url(../blocks/header/header.css);
