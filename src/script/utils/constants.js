@@ -31,7 +31,6 @@ export const formEditAvatar = document.querySelector('.popup__form_type_editAvat
 export const profileNameSelector = '.profile__name';
 export const profileJobSelector = '.profile__job';
 export const profileAvatarSelector = '.profile__avatar';
-// export const profileAvatar = document.querySelector(profileAvatarSelector);
 // Profile-End
 
 // Cards-Start
