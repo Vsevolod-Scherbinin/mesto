@@ -10,7 +10,6 @@ import UserInfo from '../script/components/UserInfo.js';
 import {
   api,
   validationObject,
-  profileAvatar,
   profileAvatarSelector,
   buttonEdit,
   buttonEditAvatar,
@@ -26,6 +25,12 @@ import {
   profileJobSelector,
   cardsContainerSelector
 } from '../script/utils/constants.js';
+
+// Page-Load-Transition-Start
+window.addEventListener('load', () => {
+  document.querySelector('.page').classList.remove('page__loading');
+});
+// Page-Load-Transition-End
 
 // Validators-Start
 const validatorEdit = new FormValidator (validationObject, formEdit);
@@ -126,8 +131,29 @@ const popupDeleteCard = new PopupConfirm(
 popupDeleteCard.setEventListeners();
 // Popup-Confirm-End
 
+
 function createCard(elem) {
-  const card = new Card(elem, '#elements__item', popupImage, popupDeleteCard, profile.id, api);
+  const card = new Card(elem, '#elements__item', popupImage, popupDeleteCard,
+  (elem) => {
+    api.putLike(elem)
+      .then((res) => {
+        !card.counterOfLikes(res.likes.length);
+        card.putLike();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
+  (elem) => {
+    api.deleteLike(elem)
+      .then((res) => {
+        !card.counterOfLikes(res.likes.length);
+        card.deleteLike();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },  profile.id);
   return card;
 }
 

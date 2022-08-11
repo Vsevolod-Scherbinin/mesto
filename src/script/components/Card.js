@@ -1,5 +1,5 @@
 export default class Card {
-  constructor(data, templateSelector, popupImage, popupDeleteCard, profileId, api) {
+  constructor(data, templateSelector, popupImage, popupDeleteCard, handlePutLike, handleDeleteLike, profileId) {
     this._data = data;
     this._name = data.name;
     this._link = data.link;
@@ -7,10 +7,11 @@ export default class Card {
     this._id = data._id;
     this._ownerId = data.owner._id;
     this._profileId = profileId;
-    this._api = api;
     this._templateSelector = templateSelector;
     this._popupImage = popupImage;
     this._popupDeleteCard = popupDeleteCard;
+    this._handlePutLike = handlePutLike;
+    this._handleDeleteLike = handleDeleteLike;
     this._checkLikesCondition = this._data.likes.some((item) => {
       return item._id === this._profileId;
     })
@@ -28,7 +29,6 @@ export default class Card {
 // Delete-Start
   _handleDelete(card, elemToDel) {
     this._popupDeleteCard.open(card, elemToDel);
-    // this._popupDeleteCard.setEventListeners(card);
   }
 
   _deleteDisable() {
@@ -44,31 +44,17 @@ export default class Card {
   // Delete-End
 
   // Like-Start
-  _counterOfLikes(numberOfLikes) {
+  counterOfLikes(numberOfLikes) {
     this._likeCounterContainer = this._element.querySelector('.elements__like-counter');
     this._likeCounterContainer.textContent = numberOfLikes;
   }
 
-  _handleLike() {
-    if(this._like.classList.contains('elements__like_activated')) {
-      this._api.deleteLike(this._data)
-        .then((res) => {
-          !this._counterOfLikes(res.likes.length);
-          this._like.classList.remove('elements__like_activated');
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } else {
-      this._api.putLike(this._data)
-        .then((res) => {
-          !this._counterOfLikes(res.likes.length);
-          this._like.classList.add('elements__like_activated');
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
+  putLike() {
+    this._like.classList.add('elements__like_activated');
+  }
+
+  deleteLike() {
+    this._like.classList.remove('elements__like_activated');
   }
 
   _checkLikes() {
@@ -88,7 +74,11 @@ export default class Card {
     });
 
     this._like.addEventListener('click', () => {
-      this._handleLike();
+      if(this._like.classList.contains('elements__like_activated')) {
+        this._handleDeleteLike(this._data);
+      } else {
+        this._handlePutLike(this._data);
+      }
     });
   }
 
@@ -103,7 +93,7 @@ export default class Card {
 
     this._deleteDisable();
     this._checkLikes();
-    this._counterOfLikes(this._likes);
+    this.counterOfLikes(this._likes);
     this._setEventListeners();
 
     return this._element;

@@ -4,6 +4,7 @@
 /* Vendor-End */
 
 @import url(../blocks/page/page.css);
+@import url(../blocks/page/__loading/page__loading.css);
 
 /* Header-Start */
 @import url(../blocks/header/header.css);
@@ -53,6 +54,7 @@
 @import url(../blocks/popup/_type/popup_type_addCard.css);
 @import url(../blocks/popup/_type/popup_type_confirm.css);
 @import url(../blocks/popup/_type/popup_type_edit.css);
+@import url(../blocks/popup/_type/popup_type_editAvatar.css);
 @import url(../blocks/popup/__error/popup__error.css);
 @import url(../blocks/popup/__error/_visible/popup__error_visible.css);
 @import url(../blocks/popup/__overlay/popup__overlay.css);
